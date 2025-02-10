@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.db.models import *
 
 
@@ -8,6 +9,14 @@ class PhoneNumber(Model):
 
     def __str__(self):
         return self.phone
+
+    def clean(self):
+        if len(self.phone) != 9 or not self.phone.isdigit():
+            raise ValidationError("Phone number must be exactly 7 digits and contain only numbers.")
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
 
 
 

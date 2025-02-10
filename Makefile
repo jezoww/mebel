@@ -8,8 +8,8 @@ admin:
 
 udb:
 	rm -rf db.sqlite3
-	rm -rf authentication/migrations/*
-	touch authentication/migrations/__init__.py
+	rm -rf mebel/migrations/*
+	touch mebel/migrations/__init__.py
 	python3 manage.py makemigrations
 	python3 manage.py migrate
 
