@@ -21,7 +21,7 @@ class PhoneNumber(Model):
 
 
 class CompanyImage(Model):
-    image = TextField()
+    image = ImageField(upload_to='images/company/')
     company = ForeignKey('mebel.Company', on_delete=CASCADE, related_name='images')
 
 
@@ -38,7 +38,7 @@ class Company(Model):
 
 
 class Image(Model):
-    image = TextField()
+    image = ImageField(upload_to='images/product/')
     product = ForeignKey('mebel.Product', on_delete=CASCADE, related_name='images')
 
     def __str__(self):
